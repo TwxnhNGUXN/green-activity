@@ -5,6 +5,9 @@ on:
     - cron: "0 */6 * * *"   # chạy 4 lần/ngày (mỗi 6h)
   workflow_dispatch:         # có thể chạy tay
 
+permissions:
+  contents: write   # thêm dòng này để cho phép commit/push
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -20,3 +23,4 @@ jobs:
           git add commits.log
           git commit -m "chore: auto commit"
           git push
+
