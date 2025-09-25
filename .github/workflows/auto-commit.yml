@@ -1,0 +1,22 @@
+name: Auto Commit Daily
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"   # chạy 4 lần/ngày (mỗi 6h)
+  workflow_dispatch:         # có thể chạy tay
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Auto commit
+        run: |
+          echo "Update: $(date)" >> commits.log
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add commits.log
+          git commit -m "chore: auto commit"
+          git push
