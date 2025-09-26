@@ -6,7 +6,7 @@ on:
   workflow_dispatch:         # có thể chạy tay
 
 permissions:
-  contents: write   # thêm dòng này để cho phép commit/push
+  contents: write   # cho phép commit/push
 
 jobs:
   build:
@@ -18,9 +18,8 @@ jobs:
       - name: Auto commit
         run: |
           echo "Update: $(date)" >> commits.log
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "TwxnhNGUXN"
+          git config --global user.email "callmetwxnh@gmail.com"
           git add commits.log
-          git commit -m "chore: auto commit"
+          git commit -m "chore: auto commit $(date)" || echo "No changes to commit"
           git push
-
