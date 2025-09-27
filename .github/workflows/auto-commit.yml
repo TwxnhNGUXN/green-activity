@@ -20,6 +20,7 @@ jobs:
           echo "Update: $(date)" >> commits.log
           git config --global user.name "TwxnhNGUXN"
           git config --global user.email "callmetwxnh@gmail.com"
+          
           git add commits.log
           git commit -m "chore: auto commit $(date)" || echo "No changes to commit"
           git push
